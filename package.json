@@ -1,0 +1,71 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "cross-env UMI_ENV=DEV umi dev",
+    "build": "umi build",
+    "postbuild": "cpx env.example.js dist && rimraf dist/assets",
+    "build:analyze": "cross-env ANALYZE=1 umi build",
+    "lint": "umi g tmp && npm run lint:js && npm run lint:style && npm run lint:prettier",
+    "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
+    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && npm run lint:style",
+    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:prettier": "prettier -c --write \"src/**/*\" --end-of-line auto",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
+    "postinstall": "umi generate tmp",
+    "prettier": "prettier -c --write \"src/**/*\"",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage",
+    "prepare": "husky install"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.less": "stylelint --syntax less",
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ],
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  },
+  "dependencies": {
+    "@ant-design/charts": "^1.2.10",
+    "@ant-design/pro-layout": "^6.5.0",
+    "ace-builds": "^1.4.12",
+    "ahooks": "^2.10.9",
+    "array-move": "^4.0.0",
+    "bytes-formatter": "^21.6.12",
+    "lodash": "^4.17.21",
+    "markdown-it": "^12.2.0",
+    "react": "17.x",
+    "react-ace": "^9.4.3",
+    "react-dom": "17.x",
+    "react-markdown-editor-lite": "^1.3.0",
+    "react-sortable-hoc": "^2.0.0",
+    "umi": "^3.3.11"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.172",
+    "@types/markdown-it": "^12.2.1",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@umijs/fabric": "^2.6.2",
+    "@umijs/preset-react": "1.x",
+    "@umijs/test": "^3.5.17",
+    "cpx": "^1.5.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
+    "espress": "^0.0.0",
+    "express": "^4.17.1",
+    "husky": "^7.0.2",
+    "lint-staged": "^10.0.7",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "stylelint": "^13.13.1",
+    "yorkie": "^2.0.0"
+  }
+}
