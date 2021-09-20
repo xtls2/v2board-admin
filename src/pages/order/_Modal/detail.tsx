@@ -126,7 +126,7 @@ const ModalDetail: FC<modalDetailProps> = (props) => {
             {intl.formatMessage({ id: 'module.order.modal.detail.total_amount' })}
           </Col>
           <Col span="18" style={{ padding: '8px' }}>
-            {currencyFormatter.format(defaultOrder.total_amount as number)}
+            {currencyFormatter.format((defaultOrder.total_amount as number) / 100)}
           </Col>
         </Row>
         <Row style={{ margin: '-8px -8px 10px' }}>
@@ -134,7 +134,7 @@ const ModalDetail: FC<modalDetailProps> = (props) => {
             {intl.formatMessage({ id: 'module.order.modal.detail.balance_amount' })}
           </Col>
           <Col span="18" style={{ padding: '8px' }}>
-            {currencyFormatter.format(defaultOrder.balance_amount as number)}
+            {currencyFormatter.format((defaultOrder.balance_amount as number) / 100)}
           </Col>
         </Row>
         <Row style={{ margin: '-8px -8px 10px' }}>
@@ -142,7 +142,7 @@ const ModalDetail: FC<modalDetailProps> = (props) => {
             {intl.formatMessage({ id: 'module.order.modal.detail.discount_amount' })}
           </Col>
           <Col span="18" style={{ padding: '8px' }}>
-            {currencyFormatter.format(defaultOrder.discount_amount as number)}
+            {currencyFormatter.format((defaultOrder.discount_amount as number) / 100)}
           </Col>
         </Row>
         <Row style={{ margin: '-8px -8px 10px' }}>
@@ -150,7 +150,7 @@ const ModalDetail: FC<modalDetailProps> = (props) => {
             {intl.formatMessage({ id: 'module.order.modal.detail.refund_amount' })}
           </Col>
           <Col span="18" style={{ padding: '8px' }}>
-            {currencyFormatter.format(defaultOrder.refund_amount as number)}
+            {currencyFormatter.format((defaultOrder.refund_amount as number) / 100)}
           </Col>
         </Row>
         <Divider />
